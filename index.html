@@ -114,6 +114,43 @@
     
         <article class="post">
             <h1>
+                <a class="title" href="/2021/03/04/go-mpsc-md/"> 
+                    一个介于wait-free 和 lock-free的高性能MPSC队列 
+                </a>
+            </h1>
+                        <div class="meta">
+                <a class="date"> 
+                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
+                    2021-03-04   
+                </a>
+                
+                <a class="category">
+                    <i class="fa fa-th" aria-hidden="true"></i>  
+                </a>
+               
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li></ul>
+                
+                <a class="tag">
+                    <i class="fa fa-tags" aria-hidden="true"></i>  
+                </a>
+                
+                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mpsc/" rel="tag">mpsc</a></li></ul>
+            </div>
+            <div class="content">
+                
+                <p>本文实现了一个介于wait-free 和 lock-free的高性能MPSC队列，也就是多生产者但消费者队列。</p>
+<p>与使用channel耗时测试：<br>|测试|MPSC队列耗时| channel耗时 |<br>|–|–|–|<br>|测试1| 115.454185ms | 965.9469ms|<br>|测试2| 97.00209ms | 992.595ms|<br>|测试3| 109.776455ms | 989.837ms|<br>|测试4| 90.19232ms | 1.3611857s|<br>|测试5| 79.12408ms | 1.2725355s|<br>|测试6| 68.650755ms | 1.3981461s|<br>|测试7| 77.155775ms | 1.2469043s|<br>|测试8| 103.899735ms | 1.4227174s|<br>|测试9| 72.15339ms | 1.3351006s|<br>|测试10| 129.974485ms | 1.0454128s|</p>
+                
+            </div>
+            <div class="continue">
+            <a href="/2021/03/04/go-mpsc-md/">
+            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+            </div>
+        </article>
+        
+        <article class="post">
+            <h1>
                 <a class="title" href="/2021/03/04/go-nil-type-md/"> 
                     Go nil详解 
                 </a>

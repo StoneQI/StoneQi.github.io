@@ -6,7 +6,7 @@
   <link href="https://stoneqi.github.io/atom.xml" rel="self"/>
   
   <link href="https://stoneqi.github.io/"/>
-  <updated>2021-03-04T02:43:26.526Z</updated>
+  <updated>2021-03-04T03:15:17.014Z</updated>
   <id>https://stoneqi.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个介于wait-free 和 lock-free的高性能MPSC队列</title>
+    <link href="https://stoneqi.github.io/2021/03/04/go-mpsc-md/"/>
+    <id>https://stoneqi.github.io/2021/03/04/go-mpsc-md/</id>
+    <published>2021-03-04T03:06:13.000Z</published>
+    <updated>2021-03-04T03:15:17.014Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文实现了一个介于wait-free 和 lock-free的高性能MPSC队列，也就是多生产者但消费者队列。&lt;/p&gt;
+&lt;p&gt;与使用channel耗时测试：&lt;br&gt;|测试|MPSC队列耗时| channel耗时 |&lt;br&gt;|–|–|–|&lt;br&gt;|测试1| 115.454185ms | 965.9469ms|&lt;br&gt;|测试2| 97.00209ms | 992.595ms|&lt;br&gt;|测试3| 109.776455ms | 989.837ms|&lt;br&gt;|测试4| 90.19232ms | 1.3611857s|&lt;br&gt;|测试5| 79.12408ms | 1.2725355s|&lt;br&gt;|测试6| 68.650755ms | 1.3981461s|&lt;br&gt;|测试7| 77.155775ms | 1.2469043s|&lt;br&gt;|测试8| 103.899735ms | 1.4227174s|&lt;br&gt;|测试9| 72.15339ms | 1.3351006s|&lt;br&gt;|测试10| 129.974485ms | 1.0454128s|&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://stoneqi.github.io/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://stoneqi.github.io/tags/go/"/>
+    
+    <category term="mpsc" scheme="https://stoneqi.github.io/tags/mpsc/"/>
+    
+  </entry>
   
   <entry>
     <title>Go nil详解</title>
