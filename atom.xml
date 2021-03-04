@@ -6,7 +6,7 @@
   <link href="https://stoneqi.github.io/atom.xml" rel="self"/>
   
   <link href="https://stoneqi.github.io/"/>
-  <updated>2021-03-04T03:15:17.014Z</updated>
+  <updated>2021-03-04T03:30:22.409Z</updated>
   <id>https://stoneqi.github.io/</id>
   
   <author>
@@ -21,11 +21,70 @@
     <link href="https://stoneqi.github.io/2021/03/04/go-mpsc-md/"/>
     <id>https://stoneqi.github.io/2021/03/04/go-mpsc-md/</id>
     <published>2021-03-04T03:06:13.000Z</published>
-    <updated>2021-03-04T03:15:17.014Z</updated>
+    <updated>2021-03-04T03:30:22.409Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文实现了一个介于wait-free 和 lock-free的高性能MPSC队列，也就是多生产者但消费者队列。&lt;/p&gt;
-&lt;p&gt;与使用channel耗时测试：&lt;br&gt;|测试|MPSC队列耗时| channel耗时 |&lt;br&gt;|–|–|–|&lt;br&gt;|测试1| 115.454185ms | 965.9469ms|&lt;br&gt;|测试2| 97.00209ms | 992.595ms|&lt;br&gt;|测试3| 109.776455ms | 989.837ms|&lt;br&gt;|测试4| 90.19232ms | 1.3611857s|&lt;br&gt;|测试5| 79.12408ms | 1.2725355s|&lt;br&gt;|测试6| 68.650755ms | 1.3981461s|&lt;br&gt;|测试7| 77.155775ms | 1.2469043s|&lt;br&gt;|测试8| 103.899735ms | 1.4227174s|&lt;br&gt;|测试9| 72.15339ms | 1.3351006s|&lt;br&gt;|测试10| 129.974485ms | 1.0454128s|&lt;/p&gt;</summary>
+&lt;p&gt;与使用channel耗时测试：&lt;br&gt;测试配置：1W个生产者，每个生产者写入90次。统计生产者全部写入队列耗时。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;测试&lt;/th&gt;
+&lt;th&gt;MPSC队列耗时&lt;/th&gt;
+&lt;th&gt;channel耗时&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;测试1&lt;/td&gt;
+&lt;td&gt;115.454185ms&lt;/td&gt;
+&lt;td&gt;965.9469ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试2&lt;/td&gt;
+&lt;td&gt;97.00209ms&lt;/td&gt;
+&lt;td&gt;992.595ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试3&lt;/td&gt;
+&lt;td&gt;109.776455ms&lt;/td&gt;
+&lt;td&gt;989.837ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试4&lt;/td&gt;
+&lt;td&gt;90.19232ms&lt;/td&gt;
+&lt;td&gt;1.3611857s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试5&lt;/td&gt;
+&lt;td&gt;79.12408ms&lt;/td&gt;
+&lt;td&gt;1.2725355s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试6&lt;/td&gt;
+&lt;td&gt;68.650755ms&lt;/td&gt;
+&lt;td&gt;1.3981461s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试7&lt;/td&gt;
+&lt;td&gt;77.155775ms&lt;/td&gt;
+&lt;td&gt;1.2469043s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试8&lt;/td&gt;
+&lt;td&gt;103.899735ms&lt;/td&gt;
+&lt;td&gt;1.4227174s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试9&lt;/td&gt;
+&lt;td&gt;72.15339ms&lt;/td&gt;
+&lt;td&gt;1.3351006s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;测试10&lt;/td&gt;
+&lt;td&gt;129.974485ms&lt;/td&gt;
+&lt;td&gt;1.0454128s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
     
     
     

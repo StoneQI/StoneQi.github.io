@@ -139,7 +139,66 @@
 </div>
             <div class="content">
                 <p>本文实现了一个介于wait-free 和 lock-free的高性能MPSC队列，也就是多生产者但消费者队列。</p>
-<p>与使用channel耗时测试：<br>|测试|MPSC队列耗时| channel耗时 |<br>|–|–|–|<br>|测试1| 115.454185ms | 965.9469ms|<br>|测试2| 97.00209ms | 992.595ms|<br>|测试3| 109.776455ms | 989.837ms|<br>|测试4| 90.19232ms | 1.3611857s|<br>|测试5| 79.12408ms | 1.2725355s|<br>|测试6| 68.650755ms | 1.3981461s|<br>|测试7| 77.155775ms | 1.2469043s|<br>|测试8| 103.899735ms | 1.4227174s|<br>|测试9| 72.15339ms | 1.3351006s|<br>|测试10| 129.974485ms | 1.0454128s|</p>
+<p>与使用channel耗时测试：<br>测试配置：1W个生产者，每个生产者写入90次。统计生产者全部写入队列耗时。</p>
+<table>
+<thead>
+<tr>
+<th>测试</th>
+<th>MPSC队列耗时</th>
+<th>channel耗时</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试1</td>
+<td>115.454185ms</td>
+<td>965.9469ms</td>
+</tr>
+<tr>
+<td>测试2</td>
+<td>97.00209ms</td>
+<td>992.595ms</td>
+</tr>
+<tr>
+<td>测试3</td>
+<td>109.776455ms</td>
+<td>989.837ms</td>
+</tr>
+<tr>
+<td>测试4</td>
+<td>90.19232ms</td>
+<td>1.3611857s</td>
+</tr>
+<tr>
+<td>测试5</td>
+<td>79.12408ms</td>
+<td>1.2725355s</td>
+</tr>
+<tr>
+<td>测试6</td>
+<td>68.650755ms</td>
+<td>1.3981461s</td>
+</tr>
+<tr>
+<td>测试7</td>
+<td>77.155775ms</td>
+<td>1.2469043s</td>
+</tr>
+<tr>
+<td>测试8</td>
+<td>103.899735ms</td>
+<td>1.4227174s</td>
+</tr>
+<tr>
+<td>测试9</td>
+<td>72.15339ms</td>
+<td>1.3351006s</td>
+</tr>
+<tr>
+<td>测试10</td>
+<td>129.974485ms</td>
+<td>1.0454128s</td>
+</tr>
+</tbody></table>
 <a id="more"></a>
 <pre><code class="go">
 package main
