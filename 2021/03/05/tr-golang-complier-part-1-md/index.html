@@ -143,6 +143,7 @@
 </blockquote>
 <p>这是该系列第一篇文章，文章将简单介绍Go 的编译器。编译器知识非常庞大，一般需要一本书才能详细描述。因此本文章只是一个快速的叫深入的介绍。我计划未来写更多的关于编译器的文章。</p>
 <p>在本系列中，我们将向Go编译器中添加一个新的语言关键字，建立一个可修改的编译器。（译者注：Go实现了自举，因此Go编译器也其实是一个Go应用，只要理解其中的原理，添加一个新的关键字特性也并非难事）</p>
+<a id="more"></a>
 <h2 id="新增一个关键字语句-statement"><a href="#新增一个关键字语句-statement" class="headerlink" title="新增一个关键字语句(statement)"></a>新增一个关键字语句(statement)</h2><p>大多数语言有一个<code>while</code>语言，在Go中并未直接有该语句，但是可以通过<code>for</code>实现：</p>
 <pre><code>for &lt;some-condition&gt; &#123;
   &lt;loop body&gt;
