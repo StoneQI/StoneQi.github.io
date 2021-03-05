@@ -177,7 +177,6 @@ for i != 0 &#123;
 <p>查看<code>src/cmd/compile</code>下的 <code>README</code> 文件可以简单的了解这些编译步骤。这个文件是这篇文章的一个好的补充。</p>
 <p>注：scan -&gt;Parse-&gt;AST，这三步实际就是一个字符串处理程序，将一个Go源文件转换为树的结构。</p>
 <h2 id="Scan"><a href="#Scan" class="headerlink" title="Scan"></a>Scan</h2><p>扫描器（<code>scanner </code>）（也称为<code>lexer</code>）将源代码解析成独立的实体（Token）。例如，<code>for</code>将解析成<code>_For</code>，<code>···</code>将解析成<code>_DotDotDot</code>，<code>·</code>将成为<code>_Dot</code>，等等。</p>
-<p>The scanner (also known as <em>lexer</em>) breaks up source code text into discrete entities for the compiler. For example, the word <code>for</code> becomes the constant <code>_For</code>; the characters <code>...</code> become <code>_DotDotDot</code>, while <code>.</code> on its own becomes <code>_Dot</code>, and so on.</p>
 <p><code>scanner</code>实现在 <code>syntax</code>包中。因此我们需要在这里新增一个关键字<code>until</code>，<code>syntax/tokens.go</code>文件有一个编译器中需要的所有tokens列表。因此我们新增加一个<code>until</code>：</p>
 <pre><code class="go">_Fallthrough // fallthrough
 _For         // for
