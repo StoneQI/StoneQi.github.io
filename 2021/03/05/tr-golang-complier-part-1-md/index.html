@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <title>
         
-            Nick
+            【翻译】Go 编译器理解: 新增一个关键字语句-Part 1
         
     </title>
     <link rel="icon" href="/img/favicon.png"/>
@@ -110,15 +110,13 @@
     </nav>
 </header>
     <main class="main">
-        <section class="posts">
-    
         <article class="post">
             <h1>
                 <a class="title" href="/2021/03/05/tr-golang-complier-part-1-md/"> 
                     【翻译】Go 编译器理解: 新增一个关键字语句-Part 1 
                 </a>
             </h1>
-                        <div class="meta">
+            <div class="meta">
                 <a class="date"> 
                     <i class="fa fa-calendar" aria-hidden="true"></i>                    
                     2021-03-05   
@@ -136,8 +134,10 @@
                 
                     <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%99%A8/" rel="tag">编译器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li></ul>
             </div>
+<div class="toc">
+  <ol class="toc-list"><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%AD%E5%8F%A5-statement"><span class="toc-list-text">新增一个关键字语句(statement)</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#Go%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-list-text">Go编译器的总体架构</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#Scan"><span class="toc-list-text">Scan</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#Parse"><span class="toc-list-text">Parse</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#%E6%9E%84%E5%BB%BAAST"><span class="toc-list-text">构建AST</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#Type-check-%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="toc-list-text">Type-check 类型检查</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#Analyze-and-rewrite-AST-%E5%88%86%E6%9E%90%E5%92%8C%E9%87%8D%E5%86%99-AST"><span class="toc-list-text">Analyze and rewrite AST 分析和重写 AST</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8"><span class="toc-list-text">尝试使用</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#part-1-%E6%80%BB%E7%BB%93"><span class="toc-list-text">part 1 总结</span></a></li><li class="toc-list-item toc-list-level-2"><a class="toc-list-link" href="#%E9%99%84%E5%BD%95-%E6%9E%84%E5%BB%BAGo%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="toc-list-text">附录-构建Go工具链</span></a></li></ol>
+</div>
             <div class="content">
-                
                 <blockquote>
 <p>原文由 Ben Johnson 发表在 <a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/">thegreenplace</a>，推荐观看原文<a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/2019/go-compiler-internals-adding-a-new-statement-to-go-part-1/">Go compiler internals: adding a new statement to Go - Part 1 - Eli Bendersky’s website (thegreenplace.net)</a></p>
 </blockquote>
@@ -469,400 +469,105 @@ Hello, until!
 <p>要编译工具链，请进入<code>src/</code>目录并运行<code>./make.bash</code>。构建后，我们也可以运行<code>./all.bash</code>来运行许多测试。运行<code>make.bash</code>会调用构建Go的完整的三步引导过程，但是在我的机器上只需要大约50秒钟。</p>
 <p>构建完成后，工具链将与<code>src</code>一起安装在<code>bin</code>中。然后，我们可以通过运行<code>bin/go install cmd/ compile</code>来更快地重建编译器本身。</p>
 
-                
             </div>
-            <div class="continue">
-            <a href="/2021/03/05/tr-golang-complier-part-1-md/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
+          
+           
+            <div class="copyright">
+                <div class="name">
+                    <a>本文作者:</a>
+                    <a>Nick Yang</a>
+                </div>
+                <div class="link">
+                    <a>本文链接:</a>
+                    <a class="permalink" href="https://stoneqi.github.io/2021/03/05/tr-golang-complier-part-1-md/">https://stoneqi.github.io/2021/03/05/tr-golang-complier-part-1-md/</a>
+                </div>
+                <div class="license">
+                    <a>版权声明:</a>
+                    <a>本博客所有文章除特别声明外，均采用许可协议 CC BY-NC-SA 3.0 CN。转载请注明出处！</a>
+                </div>
             </div>
-        </article>
-        
-        <article class="post">
-            <h1>
-                <a class="title" href="/2021/03/04/go-mpsc-md/"> 
-                    一个介于wait-free 和 lock-free的高性能MPSC队列 
-                </a>
-            </h1>
-                        <div class="meta">
-                <a class="date"> 
-                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
-                    2021-03-04   
-                </a>
-                
-                <a class="category">
-                    <i class="fa fa-th" aria-hidden="true"></i>  
-                </a>
-               
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li></ul>
-                
-                <a class="tag">
-                    <i class="fa fa-tags" aria-hidden="true"></i>  
-                </a>
-                
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mpsc/" rel="tag">mpsc</a></li></ul>
-            </div>
-            <div class="content">
-                
-                <p>本文实现了一个介于wait-free 和 lock-free的高性能MPSC队列，也就是多生产者但消费者队列。</p>
-<p>与使用channel耗时测试：<br>测试配置：1W个生产者，每个生产者写入90次。统计生产者全部写入队列耗时。</p>
-<table>
-<thead>
-<tr>
-<th>测试</th>
-<th>MPSC队列耗时</th>
-<th>channel耗时</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>测试1</td>
-<td>115.454185ms</td>
-<td>965.9469ms</td>
-</tr>
-<tr>
-<td>测试2</td>
-<td>97.00209ms</td>
-<td>992.595ms</td>
-</tr>
-<tr>
-<td>测试3</td>
-<td>109.776455ms</td>
-<td>989.837ms</td>
-</tr>
-<tr>
-<td>测试4</td>
-<td>90.19232ms</td>
-<td>1.3611857s</td>
-</tr>
-<tr>
-<td>测试5</td>
-<td>79.12408ms</td>
-<td>1.2725355s</td>
-</tr>
-<tr>
-<td>测试6</td>
-<td>68.650755ms</td>
-<td>1.3981461s</td>
-</tr>
-<tr>
-<td>测试7</td>
-<td>77.155775ms</td>
-<td>1.2469043s</td>
-</tr>
-<tr>
-<td>测试8</td>
-<td>103.899735ms</td>
-<td>1.4227174s</td>
-</tr>
-<tr>
-<td>测试9</td>
-<td>72.15339ms</td>
-<td>1.3351006s</td>
-</tr>
-<tr>
-<td>测试10</td>
-<td>129.974485ms</td>
-<td>1.0454128s</td>
-</tr>
-</tbody></table>
-                
-            </div>
-            <div class="continue">
-            <a href="/2021/03/04/go-mpsc-md/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            </div>
-        </article>
-        
-        <article class="post">
-            <h1>
-                <a class="title" href="/2021/03/04/go-nil-type-md/"> 
-                    Go nil详解 
-                </a>
-            </h1>
-                        <div class="meta">
-                <a class="date"> 
-                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
-                    2021-03-04   
-                </a>
-                
-                <a class="category">
-                    <i class="fa fa-th" aria-hidden="true"></i>  
-                </a>
-               
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li></ul>
-                
-                <a class="tag">
-                    <i class="fa fa-tags" aria-hidden="true"></i>  
-                </a>
-                
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nil/" rel="tag">nil</a></li></ul>
-            </div>
-            <div class="content">
-                
-                <h2 id="Go-类型的默认值"><a href="#Go-类型的默认值" class="headerlink" title="Go 类型的默认值"></a>Go 类型的默认值</h2><h3 id="基本类型（basic-type）"><a href="#基本类型（basic-type）" class="headerlink" title="基本类型（basic type）"></a>基本类型（basic type）</h3><ul>
-<li>内置字符串类型：<code>string</code>.</li>
-<li>内置布尔类型：<code>bool</code>.</li>
-<li>内置数值类型：<ul>
-<li><code>int8</code>、<code>uint8</code>（<code>byte</code>）、<code>int16</code>、<code>uint16</code>、<code>int32</code>（<code>rune</code>）、<code>uint32</code>、<code>int64</code>、<code>uint64</code>、<code>int</code>、<code>uint</code>、<code>uintptr</code>。</li>
-<li><code>float32</code>、<code>float64</code>。</li>
-<li><code>complex64</code>、<code>complex128</code>。</li>
-</ul>
-</li>
-</ul>
-<p>注意，<code>byte</code>是<code>uint8</code>的一个内置别名，<code>rune</code>是<code>int32</code>的一个内置别名。 </p>
-                
-            </div>
-            <div class="continue">
-            <a href="/2021/03/04/go-nil-type-md/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            </div>
-        </article>
-        
-        <article class="post">
-            <h1>
-                <a class="title" href="/2021/02/28/hello-world/"> 
-                    hello world 
-                </a>
-            </h1>
-                        <div class="meta">
-                <a class="date"> 
-                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
-                    2021-02-28   
-                </a>
-                
-                <a class="category">
-                    <i class="fa fa-th" aria-hidden="true"></i>  
-                </a>
-               
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%AE%B0/">杂记</a></li></ul>
-                
-                <a class="tag">
-                    <i class="fa fa-tags" aria-hidden="true"></i>  
-                </a>
-                
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%AE%B0/" rel="tag">杂记</a></li></ul>
-            </div>
-            <div class="content">
-                
-                <p>一直想写博客，断断续续零散也糊弄了几篇，却未坚持下去，望这次能坚持下去！</p>
-<p>如果您对本文有问题，评论，或建议，请访问<a target="_blank" rel="noopener" href="https://github.com/StoneQI/StoneQI.github.io/discussions">GitHub Discussion board</a>,这是一个Github讨论版，使用它可以进行更方便的交流。</p>
+            
 
-                
-            </div>
-            <div class="continue">
-            <a href="/2021/02/28/hello-world/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            </div>
-        </article>
-        
-        <article class="post">
-            <h1>
-                <a class="title" href="/2021/02/22/Go-Test-Used/"> 
-                    Go 实际项目测试实践 
-                </a>
-            </h1>
-                        <div class="meta">
-                <a class="date"> 
-                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
-                    2021-02-22   
-                </a>
-                
-                <a class="category">
-                    <i class="fa fa-th" aria-hidden="true"></i>  
-                </a>
-               
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li></ul>
-                
-                <a class="tag">
-                    <i class="fa fa-tags" aria-hidden="true"></i>  
-                </a>
-                
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
-            </div>
-            <div class="content">
-                
-                <p>测试的重要性不言而喻。然而在项目中，真正做到编写完整的测试却是少之又少。</p>
-<p>主要原因推测有三个：</p>
+          
+
+
+</article>
+
+
+<div class="tip">
+<button class="tip-btn">
+    打赏
+</button>
+<div class="tip-img">
 <ul>
-<li>觉得写测试太麻烦，花费时间。其实我觉得这是个伪命题，因为通常写完一段代码，我们肯定会测试该代码能否正确执行，比如HTTP请求，数据库请求，RPC请求，逻辑函数。我们都会进行访问测试，这其实就是测试用例了，只是没有集成到测试框架中。其实，我们完全可以将这部分测试写成代码放到测试中。</li>
-<li>代码不可测试。这其实很常见，大部分我们都是接手已有的代码。如果代码没有好的架构设计，统一的分格，强制的CR。那么写出不可测试的代码也就司空见惯了。对于这种代码，只能进行逐步重构了。</li>
-<li>不知道怎么测试。项目中的代码一般都会有很多的依赖，而测试中去独立部署这些服务肯定成本巨大，因此如何处理这些依赖是建立测试的最大障碍。下文中我也会尝试介绍这部分的处理手段。</li>
-</ul>
-<p>一般的测试分为单元测试和集成测试，但是这里我们会模糊这种界限，不做具体区分。下面出现的代码都是为了这篇文章而写的伪代码，没有考虑架构之类的。</p>
-                
-            </div>
-            <div class="continue">
-            <a href="/2021/02/22/Go-Test-Used/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            </div>
-        </article>
-        
-        <article class="post">
-            <h1>
-                <a class="title" href="/2021/01/27/Real-world-SQL-in-Go-Part-I/"> 
-                    [翻译]Real-world SQL in Go: PartI 
-                </a>
-            </h1>
-                        <div class="meta">
-                <a class="date"> 
-                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
-                    2021-01-27   
-                </a>
-                
-                <a class="category">
-                    <i class="fa fa-th" aria-hidden="true"></i>  
-                </a>
-               
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li></ul>
-                
-                <a class="tag">
-                    <i class="fa fa-tags" aria-hidden="true"></i>  
-                </a>
-                
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li></ul>
-            </div>
-            <div class="content">
-                
-                <blockquote>
-<p>原文由 Ben Johnson 发表在 <a target="_blank" rel="noopener" href="https://www.gobeyond.dev/">gobeyond</a>，推荐观看原文<a target="_blank" rel="noopener" href="https://www.gobeyond.dev/real-world-sql-part-one/">文章链接</a></p>
-</blockquote>
-<p>不管您是不是讨厌还是接受SQL，在某个时候您都会在项目中使用它。关系数据库结构并不总是能很好地映射到应用程序数据结构，但SQL的普遍性意味着它是开发人员在需要数据持久性时使用的基本工具。</p>
-<p>虽然Go有<a target="_blank" rel="noopener" href="https://gorm.io/">GORM</a>之类的对象关系映射库，但我们将避免这种集成库，而直接使用标准库包<code>database/sql</code>。ORM库封装了<code>SQL</code>底层的复杂性，在简单的数据访问中这很有帮助，但缺点是会使高级查询和调试更加复杂。</p>
-<p>在本文中，我们将研究如何直接使用<code>SQL</code>构造数据访问代码、在何处处理业务模型以及一些有用的SQL技巧。我将引用<a target="_blank" rel="noopener" href="https://wtfdial.com/">WTF Dial</a>项目的代码。你可以通过这篇<a target="_blank" rel="noopener" href="https://www.gobeyond.dev/wtf-dial/">介绍性的博客文章</a>来了解它。</p>
-                
-            </div>
-            <div class="continue">
-            <a href="/2021/01/27/Real-world-SQL-in-Go-Part-I/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            </div>
-        </article>
-        
-        <article class="post">
-            <h1>
-                <a class="title" href="/2021/01/25/backup-note/"> 
-                    编程备忘录 
-                </a>
-            </h1>
-                        <div class="meta">
-                <a class="date"> 
-                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
-                    2021-01-25   
-                </a>
-                
-                <a class="category">
-                    <i class="fa fa-th" aria-hidden="true"></i>  
-                </a>
-               
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a></li></ul>
-                
-                <a class="tag">
-                    <i class="fa fa-tags" aria-hidden="true"></i>  
-                </a>
-                
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E5%BF%98/" rel="tag">备忘</a></li></ul>
-            </div>
-            <div class="content">
-                
-                <p>编程中常用的、易忘的配置等记录</p>
-                
-            </div>
-            <div class="continue">
-            <a href="/2021/01/25/backup-note/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            </div>
-        </article>
-        
-        <article class="post">
-            <h1>
-                <a class="title" href="/2021/01/25/tr-packages-as-layers-not-groups/"> 
-                    [翻译]Packages as layers, not groups 
-                </a>
-            </h1>
-                        <div class="meta">
-                <a class="date"> 
-                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
-                    2021-01-25   
-                </a>
-                
-                <a class="category">
-                    <i class="fa fa-th" aria-hidden="true"></i>  
-                </a>
-               
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li></ul>
-                
-                <a class="tag">
-                    <i class="fa fa-tags" aria-hidden="true"></i>  
-                </a>
-                
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li></ul>
-            </div>
-            <div class="content">
-                
-                <blockquote>
-<p>原文由 Ben Johnson 发表在 <a target="_blank" rel="noopener" href="https://www.gobeyond.dev/">gobeyond</a>，推荐观看原文<a target="_blank" rel="noopener" href="https://www.gobeyond.dev/packages-as-layers/">文章链接</a></p>
-</blockquote>
-<p>四年前，我写了一篇名为”<a target="_blank" rel="noopener" href="https://www.gobeyond.dev/standard-package-layout/">Standard Package Layout</a>“的文章，试图解决即使是高级Go开发人员最困难的主题之一：package layout(go项目中包的组织)。 但是，大多数开发人员仍在努力用目录的方式组织管理代码。</p>
-<p>几乎所有的编程语言都有一种将相关功能分组在一起的机制。 Ruby有gems，Java有packages。 这些语言没有将代码代码分组的标准约定，因为老实说，这并不重要。 一切都取决于个人喜好。</p>
-<p>但是，转到Go的开发人员发现他们需要经常关心代码包的组织。 为什么Go软件包与其他语言如此不同？ 这是因为它们不是groups(组)，而是layers(层)。</p>
-                
-            </div>
-            <div class="continue">
-            <a href="/2021/01/25/tr-packages-as-layers-not-groups/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            </div>
-        </article>
-        
-        <article class="post">
-            <h1>
-                <a class="title" href="/2021/01/24/tr-common-crud-design-in-go/"> 
-                    [翻译]Common CRUD Design in Go 
-                </a>
-            </h1>
-                        <div class="meta">
-                <a class="date"> 
-                    <i class="fa fa-calendar" aria-hidden="true"></i>                    
-                    2021-01-24   
-                </a>
-                
-                <a class="category">
-                    <i class="fa fa-th" aria-hidden="true"></i>  
-                </a>
-               
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li></ul>
-                
-                <a class="tag">
-                    <i class="fa fa-tags" aria-hidden="true"></i>  
-                </a>
-                
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CRUD/" rel="tag">CRUD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li></ul>
-            </div>
-            <div class="content">
-                
-                <blockquote>
-<p>原文由 Ben Johnson 发表在 <a target="_blank" rel="noopener" href="https://www.gobeyond.dev/">gobeyond</a>，推荐观看原文<a target="_blank" rel="noopener" href="https://www.gobeyond.dev/crud/">文章链接</a></p>
-</blockquote>
-<p>增删改查（CRUD）是一个技术产品的基础部分，做过应用开发的人应该很熟悉它。</p>
-<p>开发CRUD应用时，大多数编程语言会有框架提供一个固定的开发架构，例如PHP的Yii2、Java的SSH。但是总所周知Go社区是反框架的。因此，我们需要设计自己的CRUD架构。</p>
-<p>在一年的Go应用开发经验后，我发现了一套通用的CRUD设计模式，能满足大多数不同的项目的要求。我将以开发 <a target="_blank" rel="noopener" href="https://github.com/benbjohnson/wtf">WTF Dial</a> 项目为例进行说明。 项目的详细介绍<a target="_blank" rel="noopener" href="https://www.gobeyond.dev/wtf-dial/">参考链接</a>。</p>
-<p>译者：<a target="_blank" rel="noopener" href="https://github.com/benbjohnson/wtf">WTF Dial(which they feel)</a> 项目提供一个界面，每个成员可输入对当前团队的糟糕程度(f-cked)。</p>
-                
-            </div>
-            <div class="continue">
-            <a href="/2021/01/24/tr-common-crud-design-in-go/">
-            继续阅读            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            </div>
-        </article>
-        
-</section>
+    
+<li>
+    <img src="/img/aipay.jpg"></img>
+</li>
 
+ 
+<li>
+    <img src="/img/wechatpay.png"></img>
+</li>
+
+</ul>
+</div>
+</div>
+
+<div class="more">
+
+<div></div>
+
+    <div class="next">
+    <a href="/2021/03/04/go-mpsc-md/"> 一个介于wait-free 和 lock-free的高性能MPSC队列 </a>
+    </div>
+    
+</div>
+
+<div class="bdsharebuttonbox">
+<a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="分享到微信" style="color:#1cbd8f">
+</a>
+<a href="#" class="bds_tsina fa fa-weibo" data-cmd="tsina" title="分享到新浪微博" style="color:#ff6363">
+</a>
+<a href="#" class="bds_twi fa fa-twitter" data-cmd="twi" title="分享到Twitter" style="color:#00A7EB">
+</a>
+<a href="#" class="bds_fbook fa fa-facebook" data-cmd="fbook" title="分享到Facebook" style="color:#00A7EB">
+</a>
+</div>
+<script>
+window._bd_share_config={
+    "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},
+    "share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='../../../../../static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+ 
+<!-- <div id="comments"></div> -->
+<div id="gitalk-container"></div>
+
+<script>
+  //   var gitment = new Gitment({
+  //   id: "Fri Mar 05 2021 15:41:49 GMT+0800",
+  //   owner: "StoneQi",
+  //   repo: "stoneqi.github.io",
+  //   oauth: {
+  //     client_id:"d9f4e8907ec2566c2307",
+  //     client_secret: "2390fe6084c9227566e82de1755e3c3de4a13592",
+  //   }
+  // })
+  // gitment.render('comments')
+
+  const gitalk = new Gitalk({
+  clientID: "d9f4e8907ec2566c2307",
+  clientSecret: "2390fe6084c9227566e82de1755e3c3de4a13592",
+  repo: "stoneqi.github.io",      // The repository of store comments,
+  owner: "StoneQi",
+  admin: ["StoneQi"],
+  language: "zh-CN",
+  id: "Fri Mar 05 2021 15:41:49 GMT+0800",      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+
+gitalk.render('gitalk-container')
+</script>
     </main>
     <a class="not-found">not found!</a>
     <div class="search-items">
