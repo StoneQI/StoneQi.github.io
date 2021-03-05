@@ -6,7 +6,7 @@
   <link href="https://stoneqi.github.io/atom.xml" rel="self"/>
   
   <link href="https://stoneqi.github.io/"/>
-  <updated>2021-03-05T08:03:16.651Z</updated>
+  <updated>2021-03-05T08:04:51.224Z</updated>
   <id>https://stoneqi.github.io/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://stoneqi.github.io/2021/03/05/tr-golang-complier-part-1-md/"/>
     <id>https://stoneqi.github.io/2021/03/05/tr-golang-complier-part-1-md/</id>
     <published>2021-03-05T07:41:49.000Z</published>
-    <updated>2021-03-05T08:03:16.651Z</updated>
+    <updated>2021-03-05T08:04:51.224Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;原文由 Ben Johnson 发表在 &lt;a href=&quot;https://eli.thegreenplace.net/&quot;&gt;thegreenplace&lt;/a&gt;，推荐观看原文&lt;a href=&quot;https://eli.thegreenplace.net/2019/go-compiler-internals-adding-a-new-statement-to-go-part-1/&quot;&gt;Go compiler internals: adding a new statement to Go - Part 1 - Eli Bendersky’s website (thegreenplace.net)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;原文发表在 &lt;a href=&quot;https://eli.thegreenplace.net/&quot;&gt;thegreenplace&lt;/a&gt;，推荐观看原文&lt;a href=&quot;https://eli.thegreenplace.net/2019/go-compiler-internals-adding-a-new-statement-to-go-part-1/&quot;&gt;Go compiler internals: adding a new statement to Go - Part 1 - Eli Bendersky’s website (thegreenplace.net)&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这是该系列第一篇文章，文章将简单介绍Go 的编译器。编译器知识非常庞大，一般需要一本书才能详细描述。因此本文章只是一个快速的叫深入的介绍。我计划未来写更多的关于编译器的文章。&lt;/p&gt;
 &lt;p&gt;在本系列中，我们将向Go编译器中添加一个新的语言关键字，建立一个可修改的编译器。（译者注：Go实现了自举，因此Go编译器也其实是一个Go应用，只要理解其中的原理，添加一个新的关键字特性也并非难事）&lt;/p&gt;</summary>
