@@ -6,7 +6,7 @@
   <link href="https://stoneqi.github.io/atom.xml" rel="self"/>
   
   <link href="https://stoneqi.github.io/"/>
-  <updated>2021-03-05T08:04:51.224Z</updated>
+  <updated>2021-03-06T07:00:58.728Z</updated>
   <id>https://stoneqi.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【翻译】Go 编译器理解: 新增一个关键字语句-Part </title>
+    <link href="https://stoneqi.github.io/2021/03/06/tr-golang-complier-part-2/"/>
+    <id>https://stoneqi.github.io/2021/03/06/tr-golang-complier-part-2/</id>
+    <published>2021-03-06T07:41:49.000Z</published>
+    <updated>2021-03-06T07:00:58.728Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这是介绍Go编译器系列的第二篇，在[第1部分]（&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="go" scheme="https://stoneqi.github.io/categories/go/"/>
+    
+    
+    <category term="翻译" scheme="https://stoneqi.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+    <category term="go" scheme="https://stoneqi.github.io/tags/go/"/>
+    
+    <category term="编译器" scheme="https://stoneqi.github.io/tags/%E7%BC%96%E8%AF%91%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>【翻译】Go 编译器理解: 新增一个关键字语句-Part 1</title>
