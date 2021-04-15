@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <title>
         
-            【翻译】Go 编译器理解: 新增一个关键字语句-Part 
+            【翻译】Go 编译器理解: 新增一个关键字语句-Part2 
         
     </title>
     <link rel="icon" href="/img/favicon.png"/>
@@ -113,7 +113,7 @@
         <article class="post">
             <h1>
                 <a class="title" href="/2021/03/06/tr-golang-complier-part-2/"> 
-                    【翻译】Go 编译器理解: 新增一个关键字语句-Part  
+                    【翻译】Go 编译器理解: 新增一个关键字语句-Part2  
                 </a>
             </h1>
             <div class="meta">
@@ -142,7 +142,9 @@
 <p><img src="https://gitee.com/stoneqi/blogimage/raw/master/img/go-compiler-flow.png"></p>
 <p>在最后，我们是通过在＂重写AST＂阶段将其替换为<code>for</code>来实现<code>until</code>。另外，在<code>gc/walk.go</code>中，其他类似的转换也是在编译器进行SSA转换和代码生成之前完成的。</p>
 <p>在这一部分中，我们将通过在编译流程中处理新的<code>until</code>语句来介绍编译器的其余阶段。</p>
+<a id="more"></a>
 <h2 id="SSA"><a href="#SSA" class="headerlink" title="SSA"></a>SSA</h2><p>在<code>gc</code>运行<code>walk</code>转换后，它调用<code>buildssa</code>（在<code>gc/ssa.go</code>中）将AST转换为新的中间表示（intermediate representation (<strong>IR</strong>)），其形式为<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Static_single_assignment_form">静态单赋值（SSA）形式</a>。</p>
+<p>注：一个Go程序元素只有包、类型、函数、变量和常量 （packages, types, functions, variables and constants）这五种。ssa定义了的他们的数据结构，使用函数体的静态单赋值（ssa）形式中间表示（IR）。</p>
 <p>SSA是什么意思？为什么编译器会将AST转为SSA？让我们从第一个问题开始；我建议阅读上面链接的SSA维基百科页面和其他资源，但这是一个快速说明。</p>
 <p>静态单赋值意味着IR中分配的每个变量仅赋值一次。考虑以下伪IR：</p>
 <pre><code>x = 1
@@ -257,19 +259,24 @@ func sayhi() &#123;
 
   bBody.Pos = n.Pos
 
+  // 首先 ，上一个 Block结束块 连接到当前的 CondBlock块
   // first, entry jump to the condition
   b := s.endBlock()
   b.AddEdgeTo(bCond)
+  // 开始生成 CondBlock
   // generate code to test condition
   s.startBlock(bCond)
   if n.Left != nil &#123;
+    // left 不为空，直接使用condBranch，if for 都使用这个函数
     s.condBranch(n.Left, bEnd, bBody, 1)
   &#125; else &#123;
-    b := s.endBlock()
+    // left 为空 无限循环。直接结束生成代码
+    b := s.endBlock() 
     b.Kind = ssa.BlockPlain
-    b.AddEdgeTo(bBody)
+    b.AddEdgeTo(bBody) // 添加到 Body的连接
   &#125;
 
+  // 设置 continue/break 
   // set up for continue/break in body
   prevContinue := s.continueTo
   prevBreak := s.breakTo
@@ -282,10 +289,13 @@ func sayhi() &#123;
     lab.breakTarget = bEnd
   &#125;
 
+  // 开始 生成 Body代码
   // generate body
   s.startBlock(bBody)
   s.stmtList(n.Nbody)
-
+  
+  // 拆除 continue/break，这里是置为上一个 prevContinue和 prevBreak
+  // 因为有循环嵌套
   // tear down continue/break
   s.continueTo = prevContinue
   s.breakTo = prevBreak
@@ -298,7 +308,7 @@ func sayhi() &#123;
   if b := s.endBlock(); b != nil &#123;
     b.AddEdgeTo(bCond)
   &#125;
-
+  // 生成结束代码
   s.startBlock(bEnd)
 </code></pre>
 <p>如果您想知道<code>n.Ninit</code>在哪里处理-它在<code>switch</code>之前完成，对于所有节点类型都是统一的。</p>
